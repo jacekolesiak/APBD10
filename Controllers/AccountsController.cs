@@ -5,16 +5,19 @@ namespace Zadanie10.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class AccountsController : ControllerBase
+public class AccountsController(IAccountsService accountsService) : ControllerBase
 {
     [HttpGet("{id:int}")]
-    public async Task<IResult> GetAccountById(IAccountsService accountsService, int id)
+    public async Task<IResult> GetAccountById(int id)
     {
-        var account = await accountsService.GetAccountByIdAsync(id);
-        if (account == null)
+        try
         {
-            return Results.NotFound($"Account with id: {id} not found.");
+            var account = await accountsService.GetAccountByIdAsync(id);
+            return Results.Ok(account);
         }
-        return Results.Ok(account);
+        catch (Exception e)
+        {
+            return Results.NotFound(e.Message);
+        }
     }
 }
