@@ -11,5 +11,5 @@ public class Category
     [MaxLength(100)]
     public string Name { get; set; }
 
-    public ICollection<ProductsCategories> ProductsCategories { get; set; }
+    public ICollection<ProductCategory> ProductsCategories { get; set; }
 }

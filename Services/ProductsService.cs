@@ -39,7 +39,7 @@ public class ProductsService(DatabaseContext databaseContext) : IProductsService
             }
         });
 
-        var productCategories = request.ProductCategories.Select(e => new ProductsCategories()
+        var productCategories = request.ProductCategories.Select(e => new ProductCategory()
         {
             Product = newProduct,
             CategoryId = e

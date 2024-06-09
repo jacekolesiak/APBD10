@@ -1,19 +1,23 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Zadanie10.Models;
 
+[Table("Shopping_Carts")]
+[PrimaryKey("AccountId", "ProductId")]
 public class ShoppingCart
 {
-    [Key, Column(Order = 0)]
     [ForeignKey("Account")]
+    [Column("FK_account")]
     public int AccountId { get; set; }
     public Account Account { get; set; }
-
-    [Key, Column(Order = 1)]
+    
     [ForeignKey("Product")]
+    [Column("FK_product")]
     public int ProductId { get; set; }
     public Product Product { get; set; }
 
+    [Column("amount")]
     public int Amount { get; set; }
 }

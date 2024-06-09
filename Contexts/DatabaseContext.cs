@@ -18,14 +18,14 @@ public class DatabaseContext : DbContext
     public DbSet<Account> Accounts { get; set; }
     public DbSet<Role> Roles { get; set; }
     public DbSet<ShoppingCart> ShoppingCarts { get; set; }
-    public DbSet<ProductsCategories> ProductsCategories { get; set; }
+    public DbSet<ProductCategory> ProductsCategories { get; set; }
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<ProductsCategories>()
-            .HasKey(pc => new { pc.ProductId, pc.CategoryId });
-        
-        modelBuilder.Entity<ShoppingCart>()
-            .HasKey(sc => new { sc.AccountId, sc.ProductId });
-    }
+    // protected override void OnModelCreating(ModelBuilder modelBuilder)
+    // {
+    //     modelBuilder.Entity<ProductsCategories>()
+    //         .HasKey(pc => new { pc.ProductId, pc.CategoryId });
+    //     
+    //     modelBuilder.Entity<ShoppingCart>()
+    //         .HasKey(sc => new { sc.AccountId, sc.ProductId });
+    // }
 }
